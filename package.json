@@ -1,0 +1,16 @@
+{
+  "name": "web3.0",
+  "version": "1.0.0",
+  "description": "web 3.0 krypt app",
+  "main": "index.js",
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "workspaces": [
+    "client",
+    "smart_contract"
+  ],
+  "scripts": {
+    "start": "npm run dev -w client"
+  }
+}
