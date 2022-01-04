@@ -12,5 +12,8 @@
   ],
   "scripts": {
     "start": "npm run dev -w client"
+  },
+  "devDependencies": {
+    "@babel/preset-react": "^7.16.7"
   }
 }
