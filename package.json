@@ -11,7 +11,8 @@
     "smart_contract"
   ],
   "scripts": {
-    "start": "npm run dev -w client"
+    "start": "npm run dev -w client",
+    "deploy-contract": "npm run deploy -w smart_contract"
   },
   "devDependencies": {
     "@babel/preset-react": "^7.16.7"
