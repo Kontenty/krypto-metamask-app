@@ -34,7 +34,7 @@ const Form = () => {
       <hr className="border-gray-400 my-4" />
       <button
         type="submit"
-        className="text-white border-gray-400 border-2 rounded-full py-2"
+        className="text-white border-gray-400 border rounded-full py-2"
       >
         Send now
       </button>

@@ -11,9 +11,9 @@ const Navbar = () => {
   const [toggleMenu, setToggleMenu] = useState(false);
   return (
     <div>
-      <nav className="w-full flex md:justify-center p-4">
+      <nav className="w-full flex md:justify-center items-center p-4 gap-40">
         <div className="md:flex=[0.5] flex-initial">
-          <img src={Logo} alt="logo" className="w4" />
+          <img src={Logo} alt="logo" className="w-40" />
         </div>
         <ul className="text-white hidden md:flex list-none justify-between items-center flex-initial">
           {navItems.map((item, index) => (

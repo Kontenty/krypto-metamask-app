@@ -14,7 +14,7 @@ const Welcome = () => {
 
   return (
     <div className="flex w-full justify-center">
-      <div className="flex flex-col md:flex-row items-start justify-between md:p-20 py-12 px-4">
+      <div className="flex flex-col md:flex-row gap-y-10 items-start justify-between md:p-20 py-12 px-4">
         <article className="flex flex-1 justify-start flex-col md:mr-10">
           <h1 className="text-3xl text-white text-gradient py-1">
             Send Crypto <br /> across the world
@@ -31,14 +31,14 @@ const Welcome = () => {
           </button>
           <div className="grid sm:grid-cols-3 grid-cols-2 w-full mt-10">
             <div className={`rounded-tl-2xl ${commonstyles}`}>Reliability</div>
-            <div className={commonstyles}>Security</div>
-            <div className={`rounded-tr-2xl ${commonstyles}`}>Ethereum</div>
-            <div className={`rounded-bl-2xl ${commonstyles}`}>Web 3.0</div>
-            <div className={`${commonstyles}`}>Low fees</div>
+            <div className={`rounded-tr-2xl sm:rounded-none ${commonstyles}`}>Security</div>
+            <div className={`sm:rounded-tr-2xl ${commonstyles}`}>Ethereum</div>
+            <div className={`sm:rounded-bl-2xl ${commonstyles}`}>Web 3.0</div>
+            <div className={`rounded-bl-2xl sm:rounded-none ${commonstyles}`}>Low fees</div>
             <div className={`rounded-br-2xl ${commonstyles}`}>Blockchain</div>
           </div>
         </article>
-        <aside className="flex flex-col flex-1">
+        <aside className="flex flex-col flex-1 gap-y-4">
           <div className="px-10 text-white">
             <div className="w-full h-40 flex flex-col justify-between p-3 eth-card white-glassmorphism">
               <div className="flex justify-between">
