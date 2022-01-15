@@ -56,6 +56,7 @@ const Form = () => {
         name="message"
         id="message"
         placeholder="Enter message"
+        {...register('message')}
         className="mt-2 w-full rounded-sm p-2 outline-none bg-transparent text-white border-none text-small white-glassmorphism resize-none"
       />
       <hr className="border-gray-400 my-4" />
