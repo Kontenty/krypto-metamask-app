@@ -2,14 +2,31 @@ import React from 'react';
 import { useForm } from 'react-hook-form';
 
 const inputs = [
-  { name: 'address', placeholder: 'Address To' },
-  { name: 'amount', placeholder: 'Amount (ETH)', type: 'number' },
-  { name: 'keyword', placeholder: 'Keyword (gif)' },
+  {
+    name: 'addressTo',
+    placeholder: 'Address To',
+    validation: { required: true },
+  },
+  {
+    name: 'amount',
+    placeholder: 'Amount (ETH)',
+    type: 'number',
+    validation: { required: true },
+  },
+  {
+    name: 'keyword',
+    placeholder: 'Keyword (gif)',
+    validation: { required: true },
+  },
   { name: 'twitter', placeholder: 'Twitter @' },
 ];
 
 const Form = () => {
-  const { register, handleSubmit } = useForm();
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm();
   const onSubmit = (data) => console.log(data);
   return (
     <form
@@ -17,13 +34,19 @@ const Form = () => {
       className="flex flex-col p-10 blue-glassmorphism"
     >
       {inputs.map((input) => (
-        <input
-          type={input.type ?? 'text'}
-          key={input.name}
-          placeholder={input.placeholder}
-          {...register(input.name)}
-          className="my-2 w-full rounded-sm p-2 outline-none bg-transparent text-white border-none text-small white-glassmorphism"
-        />
+        <React.Fragment key={input.name}>
+          <input
+            type={input.type ?? 'text'}
+            placeholder={input.placeholder}
+            {...register(input.name, input.validation)}
+            className="my-2 w-full rounded-sm p-2 outline-none bg-transparent text-white border-none text-small white-glassmorphism"
+          />
+          {errors[input.name]?.type === 'required' && (
+            <span className="text-red-300">
+              {input.placeholder} is required
+            </span>
+          )}
+        </React.Fragment>
       ))}
       <textarea
         name="message"
