@@ -1,10 +1,10 @@
 import React, { useContext } from 'react';
-import { AiFillPlayCircle } from 'react-icons/ai';
+// import { AiFillPlayCircle } from 'react-icons/ai';
 import { SiEthereum } from 'react-icons/si';
 import { BsInfoCircle } from 'react-icons/bs';
 
-import { TransactionContext } from '../context/transactionContext';
-import Loader from './Loader';
+import { TransactionContext } from '../../context/transactionContext';
+// import Loader from '../Loader';
 import Form from './Form';
 
 const commonstyles =

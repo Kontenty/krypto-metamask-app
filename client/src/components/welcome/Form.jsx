@@ -1,5 +1,6 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { useForm } from 'react-hook-form';
+import { TransactionContext } from '../../context/transactionContext';
 
 const inputs = [
   {
@@ -11,6 +12,7 @@ const inputs = [
     name: 'amount',
     placeholder: 'Amount (ETH)',
     type: 'number',
+    step: 0.0001,
     validation: { required: true },
   },
   {
@@ -22,23 +24,25 @@ const inputs = [
 ];
 
 const Form = () => {
+  const { sendTransaction } = useContext(TransactionContext);
+
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm();
-  const onSubmit = (data) => console.log(data);
+  const onSubmit = (data) => sendTransaction(data);
   return (
     <form
       onSubmit={handleSubmit(onSubmit)}
       className="flex flex-col p-10 blue-glassmorphism"
     >
-      {inputs.map((input) => (
-        <React.Fragment key={input.name}>
+      {inputs.map(({ name, type, validation, ...input }) => (
+        <React.Fragment key={name}>
           <input
-            type={input.type ?? 'text'}
-            placeholder={input.placeholder}
-            {...register(input.name, input.validation)}
+            type={type ?? 'text'}
+            {...input}
+            {...register(name, validation)}
             className="my-2 w-full rounded-sm p-2 outline-none bg-transparent text-white border-none text-small white-glassmorphism"
           />
           {errors[input.name]?.type === 'required' && (

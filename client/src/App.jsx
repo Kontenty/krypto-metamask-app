@@ -1,6 +1,6 @@
 import React from 'react';
 import Navbar from './components/Navbar';
-import Welcome from './components/Welcome';
+import Welcome from './components/welcome/Welcome';
 import Footer from './components/Footer';
 import Services from './components/Services';
 import Transactions from './components/Transactions';

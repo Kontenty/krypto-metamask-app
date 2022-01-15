@@ -55,12 +55,22 @@ export const TransactionProvider = ({ children }) => {
     }
   };
 
+  const sendTransaction = ({ addressTo, amount, keyword }) => {
+    if (!ethereum) return alert('Please install metamask');
+    try {
+      getEthereumContract();
+    } catch (error) {
+      console.log(error);
+      throw new Error('No ethereum object');
+    }
+  };
+
   useEffect(() => {
     checkIfWalletConnected();
   }, []);
 
   const contextValue = useMemo(
-    () => ({ connectWallet, currentAccount }),
+    () => ({ connectWallet, sendTransaction, currentAccount }),
     [currentAccount]
   );
 
