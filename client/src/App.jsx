@@ -2,7 +2,7 @@ import React from 'react';
 import Navbar from './components/Navbar';
 import Welcome from './components/welcome/Welcome';
 import Footer from './components/Footer';
-import Services from './components/Services';
+import Services from './components/services/Services';
 import Transactions from './components/Transactions';
 
 const App = () => (
