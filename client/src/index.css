@@ -21,6 +21,10 @@ body {
   @apply flex justify-center items-center;
 }
 
+.h-line {
+  @apply w-10/12 mx-auto h-[0.25px] bg-gray-400;
+}
+
 .gradient-bg-welcome {
   background-color: #0f0e13;
   background-image: radial-gradient(
