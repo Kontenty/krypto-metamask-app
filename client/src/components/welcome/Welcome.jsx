@@ -1,10 +1,8 @@
 import React, { useContext } from 'react';
-// import { AiFillPlayCircle } from 'react-icons/ai';
 import PayCard from './PayCard';
 
 import { TransactionContext } from '../../context/transactionContext';
-// import Loader from '../Loader';
-import Form from './Form';
+import PaymentForm from './PaymentForm';
 
 const commonstyles =
   'min-h-[70px] sm:px-0 px-2 sm:min-w=[120px] flex justify-center items-center border-[0.5px] border-gray-400 text-white';
@@ -48,7 +46,7 @@ const Welcome = () => {
           <div className="px-10 text-white">
             <PayCard currentAccount={currentAccount} />
           </div>
-          <Form />
+          <PaymentForm />
         </aside>
       </div>
     </div>

@@ -2,14 +2,17 @@ import React, { useContext } from 'react';
 import { useForm } from 'react-hook-form';
 import { TransactionContext } from '../../context/transactionContext';
 
+import Loader from '../Loader';
+
 const styles = {
   input:
     'w-full rounded-sm py-2 px-3 outline-none bg-transparent text-white border-none text-small white-glassmorphism',
   error: 'text-red-300 text-xs',
 };
 
-const Form = () => {
-  const { sendTransaction } = useContext(TransactionContext);
+const PaymentForm = () => {
+  const { sendTransaction, isTransactionLoading } =
+    useContext(TransactionContext);
 
   const {
     register,
@@ -60,14 +63,18 @@ const Form = () => {
         className={`${styles.input} resize-none`}
       />
       <hr className="border-gray-400" />
-      <button
-        type="submit"
-        className="text-white border-gray-400 border rounded-full py-2 text-"
-      >
-        Send now
-      </button>
+      {isTransactionLoading ? (
+        <Loader />
+      ) : (
+        <button
+          type="submit"
+          className="text-white border-gray-400 border rounded-full py-2 text-"
+        >
+          Send now
+        </button>
+      )}
     </form>
   );
 };
 
-export default Form;
+export default PaymentForm;
