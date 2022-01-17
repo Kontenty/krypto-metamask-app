@@ -2,26 +2,11 @@ import React, { useContext } from 'react';
 import { useForm } from 'react-hook-form';
 import { TransactionContext } from '../../context/transactionContext';
 
-const inputs = [
-  {
-    name: 'addressTo',
-    placeholder: 'Address To',
-    validation: { required: true },
-  },
-  {
-    name: 'amount',
-    placeholder: 'Amount (ETH)',
-    type: 'number',
-    step: 0.0001,
-    validation: { required: true },
-  },
-  {
-    name: 'keyword',
-    placeholder: 'Keyword (gif)',
-    validation: { required: true },
-  },
-  { name: 'twitter', placeholder: 'Twitter @' },
-];
+const styles = {
+  input:
+    'w-full rounded-sm py-2 px-3 outline-none bg-transparent text-white border-none text-small white-glassmorphism',
+  error: 'text-red-300 text-xs',
+};
 
 const Form = () => {
   const { sendTransaction } = useContext(TransactionContext);
@@ -35,34 +20,49 @@ const Form = () => {
   return (
     <form
       onSubmit={handleSubmit(onSubmit)}
-      className="flex flex-col p-10 blue-glassmorphism"
+      className="flex flex-col gap-4 p-10 blue-glassmorphism"
     >
-      {inputs.map(({ name, type, validation, ...input }) => (
-        <React.Fragment key={name}>
-          <input
-            type={type ?? 'text'}
-            {...input}
-            {...register(name, validation)}
-            className="my-2 w-full rounded-sm p-2 outline-none bg-transparent text-white border-none text-small white-glassmorphism"
-          />
-          {errors[input.name]?.type === 'required' && (
-            <span className="text-red-300">
-              {input.placeholder} is required
-            </span>
-          )}
-        </React.Fragment>
-      ))}
+      <div>
+        <input
+          placeholder="Address to"
+          {...register('addressTo', { required: true })}
+          className={styles.input}
+        />
+        {errors?.addressTo?.type === 'required' && (
+          <span className={styles.error}>! "Address to" is required</span>
+        )}
+      </div>
+      <div>
+        <input
+          type="number"
+          step={0.0001}
+          placeholder="Amount (ETH)"
+          {...register('amount', { required: true, min: 0.0001 })}
+          className={styles.input}
+        />
+        {errors?.amount?.type === 'required' && (
+          <span className={styles.error}>! "Amount" is required</span>
+        )}
+        {errors?.amount?.type === 'min' && (
+          <span className={styles.error}>! To small</span>
+        )}
+      </div>
+      <div>
+        <input
+          placeholder="Gif keyword"
+          {...register('keyword')}
+          className={styles.input}
+        />
+      </div>
       <textarea
-        name="message"
-        id="message"
         placeholder="Enter message"
         {...register('message')}
-        className="mt-2 w-full rounded-sm p-2 outline-none bg-transparent text-white border-none text-small white-glassmorphism resize-none"
+        className={`${styles.input} resize-none`}
       />
-      <hr className="border-gray-400 my-4" />
+      <hr className="border-gray-400" />
       <button
         type="submit"
-        className="text-white border-gray-400 border rounded-full py-2"
+        className="text-white border-gray-400 border rounded-full py-2 text-"
       >
         Send now
       </button>
