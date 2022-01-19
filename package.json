@@ -12,6 +12,7 @@
   ],
   "scripts": {
     "start": "npm run dev -w client",
+    "build": "npm run build -w client",
     "deploy-contract": "npm run deploy -w smart_contract"
   },
   "devDependencies": {
